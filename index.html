@@ -843,6 +843,94 @@
   .footer-links a { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gris); text-decoration: none; transition: color 0.3s; }
   .footer-links a:hover { color: var(--or-clair); }
 
+  /* ─── RÉSEAUX FLOTTANTS ─── */
+  .float-socials {
+    position: fixed;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 500;
+    opacity: 0;
+    animation: fadeIn 1s ease 2s forwards;
+  }
+  .float-btn {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+    overflow: hidden;
+  }
+  .float-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    opacity: 0.18;
+    transition: opacity 0.3s;
+  }
+  .float-btn:hover { transform: scale(1.18) translateX(-4px); }
+  .float-btn:hover::before { opacity: 0.35; }
+  .float-btn svg { position: relative; z-index: 1; width: 20px; height: 20px; }
+
+  /* WhatsApp */
+  .fb-wa { background: #0b0b0b; border: 1px solid rgba(37,211,102,0.3); }
+  .fb-wa::before { background: #25d366; }
+  .fb-wa:hover { border-color: rgba(37,211,102,0.7); box-shadow: 0 0 18px rgba(37,211,102,0.2); }
+  /* Snapchat */
+  .fb-snap { background: #0b0b0b; border: 1px solid rgba(255,252,0,0.3); }
+  .fb-snap::before { background: #fffc00; }
+  .fb-snap:hover { border-color: rgba(255,252,0,0.7); box-shadow: 0 0 18px rgba(255,252,0,0.15); }
+  /* TikTok */
+  .fb-tt { background: #0b0b0b; border: 1px solid rgba(255,0,80,0.3); }
+  .fb-tt::before { background: #ff0050; }
+  .fb-tt:hover { border-color: rgba(255,0,80,0.7); box-shadow: 0 0 18px rgba(255,0,80,0.2); }
+  /* Instagram */
+  .fb-ig { background: #0b0b0b; border: 1px solid rgba(228,64,95,0.3); }
+  .fb-ig::before { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+  .fb-ig:hover { border-color: rgba(228,64,95,0.7); box-shadow: 0 0 18px rgba(228,64,95,0.2); }
+
+  /* Tooltip au survol */
+  .float-btn .tip {
+    position: absolute;
+    right: 54px;
+    background: rgba(12,12,12,0.95);
+    border: 1px solid var(--border);
+    color: var(--blanc);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .float-btn:hover .tip { opacity: 1; transform: translateX(0); }
+
+  @media (max-width: 900px) {
+    .cursor, .cursor-ring { display: none !important; }
+    body { cursor: auto; }
+    a, button, .filter-btn, .btn-submit, .photo-card { cursor: pointer; }
+
+    .float-socials {
+      top: auto;
+      bottom: 20px;
+      right: 50%;
+      transform: translateX(50%);
+      flex-direction: row;
+      gap: 10px;
+    }
+    .float-btn .tip { display: none; }
+    .float-btn:hover { transform: scale(1.12) translateY(-4px); }
+  }
+
   /* ─── LIGHTBOX ─── */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
   .lightbox.open { display: flex; animation: fadeIn 0.3s ease; }
@@ -1336,6 +1424,46 @@
     <a href="#galerie">Galerie</a>
   </div>
 </footer>
+
+<!-- ─── RÉSEAUX FLOTTANTS ─── -->
+<div class="float-socials">
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/33142000000" class="float-btn fb-wa" target="_blank" rel="noopener" title="WhatsApp">
+    <span class="tip">WhatsApp</span>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.98-1.418A9.956 9.956 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Z" fill="rgba(37,211,102,0.15)" stroke="#25d366" stroke-width="1.2"/>
+      <path d="M8.5 9.5c.17-.37.7-1.5 1.3-1.5.25 0 .45.1.6.3l1 1.5c.15.22.1.5-.05.68l-.5.55c.3.6.8 1.2 1.4 1.7l.55-.5c.18-.15.46-.2.68-.05l1.5 1c.2.15.3.35.3.6 0 .6-1.13 1.13-1.5 1.3-1.7.8-5.5-2.8-5.28-4.58Z" fill="#25d366"/>
+    </svg>
+  </a>
+
+  <!-- Snapchat -->
+  <a href="#" class="float-btn fb-snap" target="_blank" rel="noopener" title="Snapchat">
+    <span class="tip">Snapchat</span>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2.5c-2.7 0-4.9 2.1-4.9 5.1v.9c-.4.1-.8.3-1.1.5-.1.3-.1.7.1.9.4.3.8.5 1.3.6-.2.5-.5.9-.9 1.2-.3.2-.5.5-.5.8 0 .5.4.9.9.9.2 0 .4 0 .6-.1.5-.2 1-.3 1.5-.3.4 0 .8.1 1.2.4.5.4 1.1.6 1.8.6s1.3-.2 1.8-.6c.4-.3.8-.4 1.2-.4.5 0 1 .1 1.5.3.2.1.4.1.6.1.5 0 .9-.4.9-.9 0-.3-.2-.6-.5-.8-.4-.3-.7-.7-.9-1.2.5-.1.9-.3 1.3-.6.2-.2.2-.6.1-.9-.3-.2-.7-.4-1.1-.5v-.9C16.9 4.6 14.7 2.5 12 2.5Z" fill="rgba(255,252,0,0.15)" stroke="#fffc00" stroke-width="1.2"/>
+    </svg>
+  </a>
+
+  <!-- TikTok -->
+  <a href="#" class="float-btn fb-tt" target="_blank" rel="noopener" title="TikTok">
+    <span class="tip">TikTok</span>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 3h-3a1 1 0 0 0-1 1v10a2 2 0 1 1-2.828-1.828A1 1 0 0 0 13 11.1V7a1 1 0 0 0-1.1-.998C8.55 6.42 6 9.18 6 12.5a6 6 0 1 0 9-5.195V6.373A7.97 7.97 0 0 0 19 7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1Z" fill="rgba(255,0,80,0.15)" stroke="#ff0050" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a href="#" class="float-btn fb-ig" target="_blank" rel="noopener" title="Instagram">
+    <span class="tip">Instagram</span>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="#e4405f" stroke-width="1.2" fill="rgba(228,64,95,0.1)"/>
+      <circle cx="12" cy="12" r="3.5" stroke="#e4405f" stroke-width="1.2"/>
+      <circle cx="17" cy="7" r="1" fill="#e4405f"/>
+    </svg>
+  </a>
+
+</div>
 
 <!-- ─── LIGHTBOX ─── -->
 <div class="lightbox" id="lightbox">
