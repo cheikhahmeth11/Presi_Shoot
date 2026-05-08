@@ -128,7 +128,7 @@
   .nav-cta:hover { background: var(--or-clair) !important; color: var(--noir) !important; }
 
   /* ════════════════════════════════════════
-     ─── HERO REDESIGN — Logo Background ───
+     ─── HERO ───
      ════════════════════════════════════════ */
   #accueil {
     position: relative;
@@ -141,7 +141,6 @@
     background: var(--noir);
   }
 
-  /* Halo de lumière central */
   .hero-glow {
     position: absolute;
     top: 30%;
@@ -157,11 +156,11 @@
     z-index: 0;
   }
 
-  /* Grand logo en arrière-plan */
   .hero-bg-logo {
     position: absolute;
     top: 50%;
     left: 50%;
+    /* CORRIGÉ : un seul transform unifié */
     transform: translate(-50%, -52%);
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(90px, 16vw, 200px);
@@ -173,11 +172,10 @@
     pointer-events: none;
     line-height: 1;
     z-index: 0;
-    animation: fadeInScale 1.8s ease 0.2s both;
+    animation: fadeInBgLogo 1.8s ease 0.2s both;
   }
   .hero-bg-logo .accent { color: rgba(212,175,55,0.14); }
 
-  /* Sous-titre du logo bg */
   .hero-bg-subtitle {
     position: absolute;
     top: calc(50% + clamp(52px, 9.5vw, 112px));
@@ -193,10 +191,9 @@
     user-select: none;
     pointer-events: none;
     z-index: 0;
-    animation: fadeInScale 1.8s ease 0.4s both;
+    animation: fadeIn 1.8s ease 0.4s both;
   }
 
-  /* Ligne horizontale décorative haute */
   .hero-line-top {
     position: absolute;
     top: 88px; left: 64px; right: 64px;
@@ -206,7 +203,6 @@
     animation: expandLine 1.2s ease 0.6s both;
   }
 
-  /* Coins de viseur — topleft */
   .corner-tl {
     position: absolute;
     top: 100px; left: 64px;
@@ -217,7 +213,6 @@
     opacity: 0;
     animation: fadeIn 0.8s ease 1s forwards;
   }
-  /* Coins de viseur — topright */
   .corner-tr {
     position: absolute;
     top: 100px; right: 64px;
@@ -228,7 +223,6 @@
     opacity: 0;
     animation: fadeIn 0.8s ease 1.1s forwards;
   }
-  /* Coins de viseur — bottomright */
   .corner-br {
     position: absolute;
     bottom: 56px; right: 64px;
@@ -240,14 +234,13 @@
     animation: fadeIn 0.8s ease 1.2s forwards;
   }
 
-  /* Tag vertical gauche */
+  /* CORRIGÉ : transform unique, pas de conflit avec top/translateY */
   .hero-side-tag {
     position: absolute;
-    left: 28px;
+    left: 14px;
     top: 50%;
-    transform: translateY(-50%);
     writing-mode: vertical-rl;
-    transform: rotate(180deg) translateX(50%);
+    transform: translateY(-50%) rotate(180deg);
     font-size: 0.52rem;
     letter-spacing: 0.45em;
     text-transform: uppercase;
@@ -257,7 +250,6 @@
     animation: fadeIn 1s ease 1.4s forwards;
   }
 
-  /* Tag localisation — haut droite */
   .hero-location {
     position: absolute;
     top: 108px; right: 124px;
@@ -281,7 +273,6 @@
     color: rgba(212,175,55,0.38);
   }
 
-  /* Badge ISO / réglages appareil — centre haut */
   .hero-cam-data {
     position: absolute;
     top: 108px;
@@ -294,9 +285,7 @@
     opacity: 0;
     animation: fadeIn 0.8s ease 1.2s forwards;
   }
-  .cam-val {
-    text-align: center;
-  }
+  .cam-val { text-align: center; }
   .cam-val-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1rem;
@@ -311,10 +300,7 @@
     color: rgba(212,175,55,0.18);
     margin-top: 3px;
   }
-  .cam-sep {
-    width: 1px; height: 28px;
-    background: rgba(212,175,55,0.1);
-  }
+  .cam-sep { width: 1px; height: 28px; background: rgba(212,175,55,0.1); }
 
   /* ── Contenu principal bas ── */
   .hero-bottom {
@@ -323,7 +309,6 @@
     padding: 0 64px 52px;
   }
 
-  /* Ligne de séparation */
   .hero-rule {
     width: 100%;
     height: 1px;
@@ -333,7 +318,6 @@
     animation: expandLine 1s ease 0.8s both;
   }
 
-  /* Layout 2 colonnes en bas */
   .hero-bottom-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -443,10 +427,7 @@
     opacity: 0;
     animation: fadeUp 1s ease 1s forwards;
   }
-  .hstat {
-    padding: 24px 28px;
-    position: relative;
-  }
+  .hstat { padding: 24px 28px; position: relative; }
   .hstat:nth-child(1),
   .hstat:nth-child(2) { border-bottom: 1px solid rgba(212,175,55,0.08); }
   .hstat:nth-child(1),
@@ -500,10 +481,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
-  .stat-item {
-    text-align: center;
-    position: relative;
-  }
+  .stat-item { text-align: center; position: relative; }
   .stat-item:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -542,8 +520,7 @@
   .section-label::before {
     content: '';
     display: block;
-    width: 28px;
-    height: 1px;
+    width: 28px; height: 1px;
     background: var(--or-clair);
     opacity: 0.5;
   }
@@ -636,10 +613,7 @@
   }
 
   /* ─── GALERIE ─── */
-  #galerie {
-    background: #060606;
-    position: relative;
-  }
+  #galerie { background: #060606; position: relative; }
   #galerie::before {
     content: '';
     position: absolute;
@@ -653,11 +627,7 @@
     align-items: flex-end;
     margin-bottom: 64px;
   }
-  .galerie-filters {
-    display: flex;
-    gap: 0;
-    border: 1px solid var(--border);
-  }
+  .galerie-filters { display: flex; gap: 0; border: 1px solid var(--border); }
   .filter-btn {
     background: none;
     border: none;
@@ -667,21 +637,25 @@
     font-size: 0.6rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    cursor: none;
+    cursor: pointer;
     padding: 10px 22px;
     transition: all 0.3s;
   }
   .filter-btn:last-child { border-right: none; }
   .filter-btn.active, .filter-btn:hover { color: var(--noir); background: var(--or-clair); }
+
   .masonry { columns: 3; column-gap: 14px; }
   .photo-card {
     break-inside: avoid;
     margin-bottom: 14px;
     position: relative;
     overflow: hidden;
-    cursor: none;
+    cursor: pointer;
     display: block;
+    /* CORRIGÉ : transition opacity pour les filtres */
+    transition: opacity 0.4s ease;
   }
+  .photo-card.hidden { opacity: 0; pointer-events: none; }
   .photo-inner { position: relative; overflow: hidden; }
   .photo-placeholder {
     width: 100%;
@@ -715,6 +689,7 @@
   }
   .photo-card:hover .photo-expand { opacity: 1; }
   .photo-expand:hover { border-color: var(--or-clair); }
+
   .p1 { background: linear-gradient(160deg, #1a1008 0%, #2d1f0a 100%); }
   .p2 { background: linear-gradient(160deg, #08101a 0%, #0a1a2d 100%); }
   .p3 { background: linear-gradient(160deg, #0e0e0e 0%, #1c1c1c 100%); }
@@ -724,6 +699,7 @@
   .p7 { background: linear-gradient(160deg, #121218 0%, #1e1e28 100%); }
   .p8 { background: linear-gradient(160deg, #0d0d10 0%, #1a1a20 100%); }
   .p9 { background: linear-gradient(160deg, #101020 0%, #181828 100%); }
+
   .galerie-cta { text-align: center; margin-top: 64px; }
 
   /* ─── SERVICES ─── */
@@ -756,7 +732,16 @@
   }
   .service-card:hover::after { transform: scaleX(1); }
   .service-card:hover { background: #0d0d0d; }
-  .service-num { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(212,175,55,0.07); line-height: 1; margin-bottom: 24px; transition: color 0.35s; letter-spacing: -0.03em; }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: rgba(212,175,55,0.07);
+    line-height: 1;
+    margin-bottom: 24px;
+    transition: color 0.35s;
+    letter-spacing: -0.03em;
+  }
   .service-card:hover .service-num { color: rgba(212,175,55,0.18); }
   .service-icon { font-size: 1.5rem; margin-bottom: 18px; }
   .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 300; margin-bottom: 16px; line-height: 1.1; }
@@ -794,12 +779,40 @@
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   .form-group { display: flex; flex-direction: column; gap: 9px; }
   .form-label { font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gris); }
-  .form-input, .form-select, .form-textarea { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); color: var(--blanc); padding: 14px 18px; font-family: 'Jost', sans-serif; font-size: 0.84rem; font-weight: 300; transition: border-color 0.3s, background 0.3s; outline: none; cursor: none; width: 100%; }
+  .form-input, .form-select, .form-textarea {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    color: var(--blanc);
+    padding: 14px 18px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 300;
+    transition: border-color 0.3s, background 0.3s;
+    outline: none;
+    cursor: text;
+    width: 100%;
+  }
+  .form-select { cursor: pointer; }
   .form-input::placeholder, .form-textarea::placeholder { color: #383838; }
   .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: rgba(212,175,55,0.45); background: rgba(212,175,55,0.02); }
   .form-select { appearance: none; }
-  .form-textarea { height: 116px; resize: vertical; }
-  .btn-submit { padding: 17px 46px; background: var(--or-clair); color: var(--noir); border: none; font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.32em; text-transform: uppercase; font-weight: 500; cursor: none; transition: all 0.3s ease; align-self: flex-start; position: relative; overflow: hidden; }
+  .form-textarea { height: 116px; resize: vertical; cursor: text; }
+  .btn-submit {
+    padding: 17px 46px;
+    background: var(--or-clair);
+    color: var(--noir);
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
   .btn-submit::before { content: ''; position: absolute; inset: 0; background: var(--noir); transform: translateY(100%); transition: transform 0.35s ease; }
   .btn-submit:hover::before { transform: translateY(0); }
   .btn-submit span { position: relative; z-index: 1; }
@@ -877,24 +890,19 @@
   .float-btn:hover::before { opacity: 0.35; }
   .float-btn svg { position: relative; z-index: 1; width: 20px; height: 20px; }
 
-  /* WhatsApp */
   .fb-wa { background: #0b0b0b; border: 1px solid rgba(37,211,102,0.3); }
   .fb-wa::before { background: #25d366; }
   .fb-wa:hover { border-color: rgba(37,211,102,0.7); box-shadow: 0 0 18px rgba(37,211,102,0.2); }
-  /* Snapchat */
   .fb-snap { background: #0b0b0b; border: 1px solid rgba(255,252,0,0.3); }
   .fb-snap::before { background: #fffc00; }
   .fb-snap:hover { border-color: rgba(255,252,0,0.7); box-shadow: 0 0 18px rgba(255,252,0,0.15); }
-  /* TikTok */
   .fb-tt { background: #0b0b0b; border: 1px solid rgba(255,0,80,0.3); }
   .fb-tt::before { background: #ff0050; }
   .fb-tt:hover { border-color: rgba(255,0,80,0.7); box-shadow: 0 0 18px rgba(255,0,80,0.2); }
-  /* Instagram */
   .fb-ig { background: #0b0b0b; border: 1px solid rgba(228,64,95,0.3); }
   .fb-ig::before { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
   .fb-ig:hover { border-color: rgba(228,64,95,0.7); box-shadow: 0 0 18px rgba(228,64,95,0.2); }
 
-  /* Tooltip au survol */
   .float-btn .tip {
     position: absolute;
     right: 54px;
@@ -914,14 +922,12 @@
   }
   .float-btn:hover .tip { opacity: 1; transform: translateX(0); }
 
-
-
   /* ─── LIGHTBOX ─── */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
   .lightbox.open { display: flex; animation: fadeIn 0.3s ease; }
   .lightbox-content { max-width: 85vw; max-height: 85vh; position: relative; }
   .lightbox-img { max-width: 100%; max-height: 80vh; display: block; }
-  .lightbox-close { position: fixed; top: 28px; right: 36px; background: none; border: 1px solid rgba(255,255,255,0.15); color: white; width: 44px; height: 44px; cursor: none; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, color 0.3s; font-family: 'Jost', sans-serif; }
+  .lightbox-close { position: fixed; top: 28px; right: 36px; background: none; border: 1px solid rgba(255,255,255,0.15); color: white; width: 44px; height: 44px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, color 0.3s; font-family: 'Jost', sans-serif; }
   .lightbox-close:hover { border-color: var(--or-clair); color: var(--or-clair); }
 
   /* ─── ANIMATIONS ─── */
@@ -933,13 +939,14 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-  @keyframes fadeInScale {
+  /* CORRIGÉ : keyframe dédié pour le logo bg, sans conflit de transform */
+  @keyframes fadeInBgLogo {
     from { opacity: 0; transform: translate(-50%, -52%) scale(0.96); }
     to { opacity: 1; transform: translate(-50%, -52%) scale(1); }
   }
   @keyframes expandLine {
-    from { transform-origin: left; transform: scaleX(0); opacity: 0; }
-    to { transform-origin: left; transform: scaleX(1); opacity: 1; }
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
   }
   @keyframes scrollPulse {
     0%, 100% { opacity: 1; }
@@ -951,98 +958,30 @@
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
 
-  /* ─── BURGER & MENU MOBILE ─── */
-  .burger {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 40px; height: 40px;
-    background: none;
-    border: 1px solid rgba(212,175,55,0.2);
-    cursor: pointer;
-    padding: 10px;
-    z-index: 200;
-    transition: border-color 0.3s;
-    flex-shrink: 0;
-  }
-  .burger:hover { border-color: rgba(212,175,55,0.5); }
-  .burger span {
-    display: block;
-    height: 1px;
-    background: var(--blanc);
-    transition: transform 0.35s ease, opacity 0.3s ease, width 0.3s ease;
-    transform-origin: center;
-  }
-  .burger span:nth-child(2) { width: 65%; }
-  .burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); width: 100%; }
-  .burger.open span:nth-child(2) { opacity: 0; }
-  .burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(8,8,8,0.98);
-    z-index: 150;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(20px);
-  }
-  .mobile-menu.open { display: flex; animation: fadeIn 0.3s ease; }
-  .mobile-menu ul { list-style: none; text-align: center; }
-  .mobile-menu ul li {
-    border-bottom: 1px solid rgba(212,175,55,0.06);
-  }
-  .mobile-menu ul li:first-child { border-top: 1px solid rgba(212,175,55,0.06); }
-  .mobile-menu ul li a {
-    display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.6rem;
-    font-weight: 300;
-    letter-spacing: 0.04em;
-    color: var(--blanc);
-    text-decoration: none;
-    padding: 16px 60px;
-    transition: color 0.3s;
-  }
-  .mobile-menu ul li a:hover { color: var(--or-clair); }
-  .mobile-menu ul li a.nav-cta-m { color: var(--or-clair); font-style: italic; }
-  .mobile-menu-socials {
-    display: flex;
-    gap: 12px;
-    margin-top: 36px;
-  }
-  .mobile-menu-socials a {
-    width: 38px; height: 38px;
-    border: 1px solid rgba(255,255,255,0.08);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--gris);
-    text-decoration: none;
-    font-size: 0.65rem;
-    transition: all 0.3s;
-  }
-  .mobile-menu-socials a:hover { border-color: var(--or-clair); color: var(--or-clair); }
-  .mobile-menu-footer {
-    margin-top: 28px;
-    font-size: 0.52rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: rgba(212,175,55,0.22);
-  }
-
   /* ─── MOBILE ─── */
   @media (max-width: 900px) {
-    body { cursor: auto; }
-    a, button, .filter-btn, .btn-submit, .photo-card { cursor: pointer; }
+    /* CORRIGÉ : curseur natif sur mobile */
     .cursor, .cursor-ring { display: none !important; }
+    body { cursor: auto; }
+    a, button, .filter-btn, .btn-submit, .photo-card,
+    .form-input, .form-select, .form-textarea, .lightbox-close { cursor: auto; }
+    .form-select, .btn-submit, .lightbox-close { cursor: pointer; }
+    .form-input, .form-textarea { cursor: text; }
+
+    .float-socials {
+      top: auto;
+      bottom: 20px;
+      right: 50%;
+      transform: translateX(50%);
+      flex-direction: row;
+      gap: 10px;
+    }
+    .float-btn .tip { display: none; }
+    .float-btn:hover { transform: scale(1.12) translateY(-4px); }
 
     nav { padding: 20px 24px; }
     nav.scrolled { padding: 14px 24px; }
     .nav-links { display: none; }
-    .burger { display: flex; }
-
     #accueil { min-height: 100svh; }
     .hero-bottom { padding: 0 24px 40px; }
     .hero-bottom-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -1053,9 +992,7 @@
     .corner-br { right: 24px; }
     .hero-location { right: 84px; }
     .hero-scroll { display: none; }
-    .hero-stats { grid-template-columns: repeat(2,1fr); }
     .hero-line-top { left: 24px; right: 24px; }
-
     section { padding: 80px 24px; }
     .stats-bar { grid-template-columns: repeat(2,1fr); padding: 32px 24px; }
     .stat-item:nth-child(2)::after { display: none; }
@@ -1074,17 +1011,7 @@
     .galerie-filters { width: 100%; }
     .filter-btn { flex: 1; }
     .contact-form .form-row { grid-template-columns: 1fr; }
-
-    .float-socials {
-      top: auto;
-      bottom: 20px;
-      right: 50%;
-      transform: translateX(50%);
-      flex-direction: row;
-      gap: 10px;
-    }
-    .float-btn .tip { display: none; }
-    .float-btn:hover { transform: scale(1.12) translateY(-4px); }
+    .hero-stats { grid-template-columns: repeat(2,1fr); }
   }
 </style>
 </head>
@@ -1103,128 +1030,47 @@
     <li><a href="#reservation">Réservation</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
-  <button class="burger" id="burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
-<!-- ─── MENU MOBILE ─── -->
-<div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="#accueil" class="menu-link">Accueil</a></li>
-    <li><a href="#galerie" class="menu-link">Galerie</a></li>
-    <li><a href="#about" class="menu-link">À propos</a></li>
-    <li><a href="#services" class="menu-link">Services</a></li>
-    <li><a href="#reservation" class="menu-link">Réservation</a></li>
-    <li><a href="#contact" class="menu-link nav-cta-m">Contact</a></li>
-  </ul>
-  <div class="mobile-menu-socials">
-    <a href="#">wa</a>
-    <a href="#">ig</a>
-    <a href="#">tt</a>
-    <a href="#">sc</a>
-  </div>
-  <div class="mobile-menu-footer">Alexandre Moreau · Paris 2026</div>
-</nav>
-
-<!-- ════════════════════════════════════════
-     ─── HERO REDESIGN — Logo Background ───
-     ════════════════════════════════════════ -->
+<!-- ─── HERO ─── -->
 <section id="accueil">
-
-  <!-- Halo lumineux -->
   <div class="hero-glow"></div>
-
-  <!-- Logo géant en arrière-plan -->
   <div class="hero-bg-logo">LUM<span class="accent">I</span>ÈRE</div>
   <div class="hero-bg-subtitle">Photographe · Alexandre Moreau · Paris · 2026</div>
-
-  <!-- Ligne décorative haute -->
   <div class="hero-line-top"></div>
-
-  <!-- Coins de viseur -->
   <div class="corner-tl"></div>
   <div class="corner-tr"></div>
   <div class="corner-br"></div>
-
-  <!-- Tag vertical gauche -->
   <div class="hero-side-tag">Alexandre Moreau · Paris 2026</div>
-
-  <!-- Localisation haut droite -->
-  <div class="hero-location">
-    <span>Paris, France</span>
-  </div>
-
-  <!-- Données appareil photo — centre haut -->
+  <div class="hero-location"><span>Paris, France</span></div>
   <div class="hero-cam-data">
-    <div class="cam-val">
-      <div class="cam-val-num">f/1.8</div>
-      <div class="cam-val-label">Ouverture</div>
-    </div>
+    <div class="cam-val"><div class="cam-val-num">f/1.8</div><div class="cam-val-label">Ouverture</div></div>
     <div class="cam-sep"></div>
-    <div class="cam-val">
-      <div class="cam-val-num">85mm</div>
-      <div class="cam-val-label">Focale</div>
-    </div>
+    <div class="cam-val"><div class="cam-val-num">85mm</div><div class="cam-val-label">Focale</div></div>
     <div class="cam-sep"></div>
-    <div class="cam-val">
-      <div class="cam-val-num">ISO 400</div>
-      <div class="cam-val-label">Sensibilité</div>
-    </div>
+    <div class="cam-val"><div class="cam-val-num">ISO 400</div><div class="cam-val-label">Sensibilité</div></div>
     <div class="cam-sep"></div>
-    <div class="cam-val">
-      <div class="cam-val-num">1/200s</div>
-      <div class="cam-val-label">Vitesse</div>
-    </div>
+    <div class="cam-val"><div class="cam-val-num">1/200s</div><div class="cam-val-label">Vitesse</div></div>
   </div>
-
-  <!-- Indicateur scroll -->
-  <div class="hero-scroll">
-    <span>Défiler</span>
-    <div class="scroll-line"></div>
-  </div>
-
-  <!-- ── Contenu principal en bas ── -->
+  <div class="hero-scroll"><span>Défiler</span><div class="scroll-line"></div></div>
   <div class="hero-bottom">
     <div class="hero-rule"></div>
     <div class="hero-bottom-grid">
-
-      <!-- Colonne gauche : texte -->
       <div>
         <p class="hero-eyebrow">Photographe Professionnel · Paris</p>
-        <h1 class="hero-title">
-          L'art de<br>figer<br>l'<em>instant</em>
-        </h1>
-        <p class="hero-sub">
-          Mariages, portraits, mode — chaque séance est une œuvre unique.
-          Je capte l'émotion vraie, la lumière parfaite, le moment décisif.
-        </p>
+        <h1 class="hero-title">L'art de<br>figer<br>l'<em>instant</em></h1>
+        <p class="hero-sub">Mariages, portraits, mode — chaque séance est une œuvre unique. Je capte l'émotion vraie, la lumière parfaite, le moment décisif.</p>
         <div class="hero-btns">
           <a href="#galerie" class="btn-primary"><span>Explorer la Galerie</span></a>
           <a href="#reservation" class="btn-outline">Réserver une Séance</a>
         </div>
       </div>
-
-      <!-- Colonne droite : stats -->
       <div class="hero-stats">
-        <div class="hstat">
-          <div class="hstat-num">12+</div>
-          <div class="hstat-label">Années d'expérience</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-num">840</div>
-          <div class="hstat-label">Clients satisfaits</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-num">3.2k</div>
-          <div class="hstat-label">Shoots réalisés</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-num">18</div>
-          <div class="hstat-label">Prix & distinctions</div>
-        </div>
+        <div class="hstat"><div class="hstat-num">12+</div><div class="hstat-label">Années d'expérience</div></div>
+        <div class="hstat"><div class="hstat-num">840</div><div class="hstat-label">Clients satisfaits</div></div>
+        <div class="hstat"><div class="hstat-num">3.2k</div><div class="hstat-label">Shoots réalisés</div></div>
+        <div class="hstat"><div class="hstat-num">18</div><div class="hstat-label">Prix & distinctions</div></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -1274,8 +1120,8 @@
   <div class="masonry" id="galerie-grid">
     <div class="photo-card reveal" data-cat="mariage">
       <div class="photo-inner">
-        <svg class="photo-placeholder p1" height="380" viewBox="0 0 300 380"><rect width="300" height="380"/><text x="150" y="182" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">MARIAGE</text><text x="150" y="208" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Jade & Thomas · Provence</text></svg>
-        <div class="photo-overlay"><div class="photo-info"><h4>Jade & Thomas</h4><span>Mariage · Provence</span></div></div>
+        <svg class="photo-placeholder p1" height="380" viewBox="0 0 300 380"><rect width="300" height="380"/><text x="150" y="182" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">MARIAGE</text><text x="150" y="208" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Jade &amp; Thomas · Provence</text></svg>
+        <div class="photo-overlay"><div class="photo-info"><h4>Jade &amp; Thomas</h4><span>Mariage · Provence</span></div></div>
         <div class="photo-expand">+</div>
       </div>
     </div>
@@ -1296,14 +1142,14 @@
     <div class="photo-card reveal" data-cat="portrait">
       <div class="photo-inner">
         <svg class="photo-placeholder p6" height="360" viewBox="0 0 300 360"><rect width="300" height="360"/><text x="150" y="172" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">PORTRAIT</text><text x="150" y="198" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Portrait dramatique</text></svg>
-        <div class="photo-overlay"><div class="photo-info"><h4>Lumière Dramatique</h4><span>Portrait · Noir & Blanc</span></div></div>
+        <div class="photo-overlay"><div class="photo-info"><h4>Lumière Dramatique</h4><span>Portrait · Noir &amp; Blanc</span></div></div>
         <div class="photo-expand">+</div>
       </div>
     </div>
     <div class="photo-card reveal reveal-delay-1" data-cat="mariage">
       <div class="photo-inner">
-        <svg class="photo-placeholder p3" height="300" viewBox="0 0 300 300"><rect width="300" height="300"/><text x="150" y="144" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">MARIAGE</text><text x="150" y="170" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Luna & Marc · Château</text></svg>
-        <div class="photo-overlay"><div class="photo-info"><h4>Luna & Marc</h4><span>Mariage · Château</span></div></div>
+        <svg class="photo-placeholder p3" height="300" viewBox="0 0 300 300"><rect width="300" height="300"/><text x="150" y="144" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">MARIAGE</text><text x="150" y="170" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Luna &amp; Marc · Château</text></svg>
+        <div class="photo-overlay"><div class="photo-info"><h4>Luna &amp; Marc</h4><span>Mariage · Château</span></div></div>
         <div class="photo-expand">+</div>
       </div>
     </div>
@@ -1316,15 +1162,15 @@
     </div>
     <div class="photo-card reveal" data-cat="portrait">
       <div class="photo-inner">
-        <svg class="photo-placeholder p5" height="260" viewBox="0 0 300 260"><rect width="300" height="260"/><text x="150" y="124" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">PORTRAIT</text><text x="150" y="150" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Enfance & Famille</text></svg>
+        <svg class="photo-placeholder p5" height="260" viewBox="0 0 300 260"><rect width="300" height="260"/><text x="150" y="124" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">PORTRAIT</text><text x="150" y="150" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Enfance &amp; Famille</text></svg>
         <div class="photo-overlay"><div class="photo-info"><h4>Famille Petit</h4><span>Portrait · Famille</span></div></div>
         <div class="photo-expand">+</div>
       </div>
     </div>
     <div class="photo-card reveal reveal-delay-1" data-cat="mariage">
       <div class="photo-inner">
-        <svg class="photo-placeholder p7" height="380" viewBox="0 0 300 380"><rect width="300" height="380"/><text x="150" y="182" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">MARIAGE</text><text x="150" y="208" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Sophie & Nathan</text></svg>
-        <div class="photo-overlay"><div class="photo-info"><h4>Sophie & Nathan</h4><span>Mariage · Plage</span></div></div>
+        <svg class="photo-placeholder p7" height="380" viewBox="0 0 300 380"><rect width="300" height="380"/><text x="150" y="182" text-anchor="middle" fill="rgba(212,175,55,0.35)" font-family="Georgia,serif" font-size="13" letter-spacing="4">MARIAGE</text><text x="150" y="208" text-anchor="middle" fill="rgba(212,175,55,0.18)" font-family="Georgia,serif" font-size="10" letter-spacing="2" font-style="italic">Sophie &amp; Nathan</text></svg>
+        <div class="photo-overlay"><div class="photo-info"><h4>Sophie &amp; Nathan</h4><span>Mariage · Plage</span></div></div>
         <div class="photo-expand">+</div>
       </div>
     </div>
@@ -1352,7 +1198,7 @@
     <div class="service-card reveal">
       <div class="service-num">01</div>
       <div class="service-icon">💍</div>
-      <h3 class="service-name">Mariage &<br>Événements</h3>
+      <h3 class="service-name">Mariage &amp;<br>Événements</h3>
       <p class="service-desc">Couverture complète de votre journée, de la préparation à la soirée. Reportage documentaire et portraits artistiques.</p>
       <div class="service-price">À partir de 1 800 €</div>
       <a href="#reservation" class="service-link"><span>Réserver</span></a>
@@ -1360,7 +1206,7 @@
     <div class="service-card reveal reveal-delay-1">
       <div class="service-num">02</div>
       <div class="service-icon">🎭</div>
-      <h3 class="service-name">Portrait &<br>Famille</h3>
+      <h3 class="service-name">Portrait &amp;<br>Famille</h3>
       <p class="service-desc">Séances en studio ou en extérieur. Portraits professionnels, photos de famille, grossesse et naissance.</p>
       <div class="service-price">À partir de 350 €</div>
       <a href="#reservation" class="service-link"><span>Réserver</span></a>
@@ -1368,7 +1214,7 @@
     <div class="service-card reveal reveal-delay-2">
       <div class="service-num">03</div>
       <div class="service-icon">✦</div>
-      <h3 class="service-name">Mode &<br>Éditorial</h3>
+      <h3 class="service-name">Mode &amp;<br>Éditorial</h3>
       <p class="service-desc">Collaborations avec créateurs, marques et agences. Lookbooks, campagnes digitales et éditoriales magazines.</p>
       <div class="service-price">Sur devis</div>
       <a href="#contact" class="service-link"><span>Me contacter</span></a>
@@ -1390,7 +1236,7 @@
         </li>
         <li>
           <div class="info-icon">📍</div>
-          <div class="info-text"><strong>Paris & Île-de-France</strong>Déplacements possibles en France et à l'étranger</div>
+          <div class="info-text"><strong>Paris &amp; Île-de-France</strong>Déplacements possibles en France et à l'étranger</div>
         </li>
         <li>
           <div class="info-icon">💾</div>
@@ -1491,7 +1337,7 @@
       <form class="contact-form" id="contact-form">
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Prénom & Nom</label>
+            <label class="form-label">Prénom &amp; Nom</label>
             <input type="text" class="form-input" placeholder="Marie Dupont">
           </div>
           <div class="form-group">
@@ -1506,7 +1352,7 @@
             <option>Question générale</option>
             <option>Collaboration commerciale</option>
             <option>Demande de tarif</option>
-            <option>Presse & Médias</option>
+            <option>Presse &amp; Médias</option>
             <option>Autre</option>
           </select>
         </div>
@@ -1533,8 +1379,6 @@
 
 <!-- ─── RÉSEAUX FLOTTANTS ─── -->
 <div class="float-socials">
-
-  <!-- WhatsApp -->
   <a href="https://wa.me/33142000000" class="float-btn fb-wa" target="_blank" rel="noopener" title="WhatsApp">
     <span class="tip">WhatsApp</span>
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1542,24 +1386,18 @@
       <path d="M8.5 9.5c.17-.37.7-1.5 1.3-1.5.25 0 .45.1.6.3l1 1.5c.15.22.1.5-.05.68l-.5.55c.3.6.8 1.2 1.4 1.7l.55-.5c.18-.15.46-.2.68-.05l1.5 1c.2.15.3.35.3.6 0 .6-1.13 1.13-1.5 1.3-1.7.8-5.5-2.8-5.28-4.58Z" fill="#25d366"/>
     </svg>
   </a>
-
-  <!-- Snapchat -->
   <a href="#" class="float-btn fb-snap" target="_blank" rel="noopener" title="Snapchat">
     <span class="tip">Snapchat</span>
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M12 2.5c-2.7 0-4.9 2.1-4.9 5.1v.9c-.4.1-.8.3-1.1.5-.1.3-.1.7.1.9.4.3.8.5 1.3.6-.2.5-.5.9-.9 1.2-.3.2-.5.5-.5.8 0 .5.4.9.9.9.2 0 .4 0 .6-.1.5-.2 1-.3 1.5-.3.4 0 .8.1 1.2.4.5.4 1.1.6 1.8.6s1.3-.2 1.8-.6c.4-.3.8-.4 1.2-.4.5 0 1 .1 1.5.3.2.1.4.1.6.1.5 0 .9-.4.9-.9 0-.3-.2-.6-.5-.8-.4-.3-.7-.7-.9-1.2.5-.1.9-.3 1.3-.6.2-.2.2-.6.1-.9-.3-.2-.7-.4-1.1-.5v-.9C16.9 4.6 14.7 2.5 12 2.5Z" fill="rgba(255,252,0,0.15)" stroke="#fffc00" stroke-width="1.2"/>
     </svg>
   </a>
-
-  <!-- TikTok -->
   <a href="#" class="float-btn fb-tt" target="_blank" rel="noopener" title="TikTok">
     <span class="tip">TikTok</span>
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M19 3h-3a1 1 0 0 0-1 1v10a2 2 0 1 1-2.828-1.828A1 1 0 0 0 13 11.1V7a1 1 0 0 0-1.1-.998C8.55 6.42 6 9.18 6 12.5a6 6 0 1 0 9-5.195V6.373A7.97 7.97 0 0 0 19 7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1Z" fill="rgba(255,0,80,0.15)" stroke="#ff0050" stroke-width="1.2" stroke-linejoin="round"/>
     </svg>
   </a>
-
-  <!-- Instagram -->
   <a href="#" class="float-btn fb-ig" target="_blank" rel="noopener" title="Instagram">
     <span class="tip">Instagram</span>
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1568,7 +1406,6 @@
       <circle cx="17" cy="7" r="1" fill="#e4405f"/>
     </svg>
   </a>
-
 </div>
 
 <!-- ─── LIGHTBOX ─── -->
@@ -1586,7 +1423,7 @@
 </div>
 
 <script>
-// ── Curseur
+// ── Curseur personnalisé
 const cursor = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursorRing');
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1602,22 +1439,6 @@ document.addEventListener('mousemove', e => {
   cursorRing.style.top = ringY + 'px';
   requestAnimationFrame(animateRing);
 })();
-
-// ── Burger menu
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobileMenu');
-burger.addEventListener('click', () => {
-  burger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-});
-document.querySelectorAll('.menu-link').forEach(link => {
-  link.addEventListener('click', () => {
-    burger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-});
 
 // ── Nav scroll
 const nav = document.getElementById('nav');
@@ -1636,20 +1457,30 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ── Filtres galerie
+// ── Filtres galerie — CORRIGÉ : logique simplifiée et fiable
 const filters = document.querySelectorAll('.filter-btn');
 const cards = document.querySelectorAll('.photo-card');
+
 filters.forEach(btn => {
   btn.addEventListener('click', () => {
     filters.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const cat = btn.dataset.filter;
+
     cards.forEach(card => {
-      const show = cat === 'all' || card.dataset.cat === cat;
-      card.style.opacity = show ? '1' : '0';
-      card.style.pointerEvents = show ? 'auto' : 'none';
-      setTimeout(() => { card.style.display = show ? 'block' : 'none'; }, show ? 0 : 400);
-      if (show) { card.style.display = 'block'; setTimeout(() => card.style.opacity = '1', 10); }
+      const visible = cat === 'all' || card.dataset.cat === cat;
+      if (visible) {
+        card.style.display = 'block';
+        // Petit délai pour que display:block soit pris en compte avant la transition
+        requestAnimationFrame(() => { card.style.opacity = '1'; card.style.pointerEvents = 'auto'; });
+      } else {
+        card.style.opacity = '0';
+        card.style.pointerEvents = 'none';
+        // Cacher après la transition
+        setTimeout(() => {
+          if (card.style.opacity === '0') card.style.display = 'none';
+        }, 420);
+      }
     });
   });
 });
@@ -1663,28 +1494,30 @@ document.getElementById('lightboxClose').addEventListener('click', () => lightbo
 lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
 
-// ── Booking form
+// ── Formulaire réservation
 document.getElementById('booking-form').addEventListener('submit', e => {
   e.preventDefault();
-  const btn = e.target.querySelector('.btn-submit span');
-  btn.textContent = '✓ Demande envoyée';
-  e.target.querySelector('.btn-submit').style.background = '#1e3a1e';
-  e.target.querySelector('.btn-submit span').style.color = '#7ec87e';
+  const btn = e.target.querySelector('.btn-submit');
+  const span = btn.querySelector('span');
+  span.textContent = '✓ Demande envoyée';
+  btn.style.background = '#1e3a1e';
+  span.style.color = '#7ec87e';
   setTimeout(() => {
-    btn.textContent = 'Envoyer la demande →';
-    e.target.querySelector('.btn-submit').style.background = '';
-    e.target.querySelector('.btn-submit span').style.color = '';
+    span.textContent = 'Envoyer la demande →';
+    btn.style.background = '';
+    span.style.color = '';
     e.target.reset();
   }, 4500);
 });
 
-// ── Contact form
+// ── Formulaire contact
 document.getElementById('contact-form').addEventListener('submit', e => {
   e.preventDefault();
-  e.target.style.opacity = '0';
-  e.target.style.transition = 'opacity 0.4s ease';
+  const form = e.target;
+  form.style.opacity = '0';
+  form.style.transition = 'opacity 0.4s ease';
   setTimeout(() => {
-    e.target.style.display = 'none';
+    form.style.display = 'none';
     const success = document.getElementById('contactSuccess');
     success.classList.add('show');
     success.style.animation = 'fadeIn 0.5s ease forwards';
